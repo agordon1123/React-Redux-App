@@ -5,7 +5,7 @@ import './App.scss';
 
 // components
 import CityList from './components/CityList';
-import { getCityData } from './actions';
+import { getLeftCityData } from './actions';
 
 const App = props => {
   console.log(props)
@@ -13,7 +13,7 @@ const App = props => {
     <div className="App">
       <h1>CompArea</h1>
       <p>Comparea is an app built using React and Redux for async data transfer</p>
-      <button onClick={props.getCityData}>getCityData</button>
+      <button onClick={props.getLeftCityData}>getCityData</button>
       <CityList props={props} />
     </div>
   );
@@ -21,10 +21,11 @@ const App = props => {
 
 const mapStateToProps = state => {
   return {
-    city: state.city,
+    left: state.left,
+    right: state.right,
     isLoading: state.isLoading,
     error: state.error
   }
 }
 
-export default connect(mapStateToProps, { getCityData })(App);
+export default connect(mapStateToProps, { getLeftCityData })(App);

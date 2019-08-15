@@ -4,12 +4,12 @@ import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import { cityReducer } from './reducers';
+import { leftCityReducer } from './reducers';
 import './index.css';
 import App from './App';
 
 const store = createStore(
-    cityReducer,
+    leftCityReducer,
     applyMiddleware(
         thunk,
         logger

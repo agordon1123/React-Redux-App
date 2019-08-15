@@ -18,8 +18,9 @@ const CityRight = (props) => {
                 <option value='5746545'>Portland, OR</option>
             </select>
 
-            <p>{props.props.props.city.summary && props.props.props.city.summary}</p>
-            <h2>{props.props.props.city.teleport_city_score && props.props.props.city.teleport_city_score}</h2>
+            {/* <h4>{props.props.props.left.data.full_name && props.props.props.left.data.full_name}</h4>
+            <p>{props.props.props.left.scores.summary && props.props.props.left.scores.summary}</p>
+            <h2>{props.props.props.left.scores.teleport_city_score && props.props.props.left.scores.teleport_city_score}</h2> */}
         </div>
     )
 }
