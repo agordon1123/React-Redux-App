@@ -2,6 +2,7 @@ import { FETCH_CITY_DATA_START, FETCH_CITY_DATA_SUCCESS, ERROR } from '../action
 
 const intialState = {
     city: [],
+    rating: [],
     isLoading: false,
     error: ''
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './App.css';
+import './App.scss';
 
 // components
 import CityList from './components/CityList';
@@ -11,9 +11,10 @@ const App = props => {
   console.log(props)
   return (
     <div className="App">
-      <h1>Hello from App</h1>
+      <h1>CompArea</h1>
+      <p>Comparea is an app built using React and Redux for async data transfer</p>
       <button onClick={props.getCityData}>getCityData</button>
-      <CityList />
+      <CityList props={props} />
     </div>
   );
 }

@@ -1,11 +1,13 @@
 import React from 'react';
-import City from './City';
+import CityRight from './CityRight';
+import CityLeft from './CityLeft';
 
-const CityList = () => {
+const CityList = (props) => {
+    console.log(props)
     return (
-        <div>
-            <h1>Hello from CityList</h1>
-            <City />
+        <div className='cityList'>
+            <CityLeft  props={props} />
+            <CityRight props={props} />
         </div>
     )
 }

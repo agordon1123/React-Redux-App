@@ -17,5 +17,6 @@ export const getCityData = () => {
             .catch(err => {
                 console.log('err', err);
             })
+        
     };
 }
