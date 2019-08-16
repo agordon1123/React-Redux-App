@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { leftCityReducer, rightCityReducer } from './reducers';
+import 'normalize.css';
 import './index.css';
 import App from './App';
 

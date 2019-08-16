@@ -20,28 +20,41 @@ const CityRight = (props) => {
         <div className='city cityRight'>
             <h1>Right</h1>
 
-            <form onSubmit={handleSubmit}>
-                <label>Austin, TX</label>
-                <input type='radio' name='rightRadio' value='austin' onChange={handleChange} />
+            <form className='form' onSubmit={handleSubmit}>
+                <span className='input'>
+                    <label>Austin, TX</label>
+                    <input className='radio' type='radio' name='rightRadio' value='austin' onChange={handleChange} />
+                </span>
 
-                <label>San Francisco, CA</label>
-                <input type='radio' name='rightRadio' value='san-francisco-bay-area' onChange={handleChange} />
+                <span className='input'>
+                    <label>San Francisco, CA</label>
+                    <input className='radio' type='radio' name='rightRadio' value='san-francisco-bay-area' onChange={handleChange} />
+                </span>
 
-                <label>Charleston, SC</label>
-                <input type='radio' name='rightRadio' value='charleston' onChange={handleChange} />
+                <span className='input'>
+                    <label>Charleston, SC</label>
+                    <input className='radio' type='radio' name='rightRadio' value='charleston' onChange={handleChange} />
+                </span>
 
-                <label>New York, NY</label>
-                <input type='radio' name='rightRadio' value='new-york' onChange={handleChange} />
+                <span className='input'>
+                    <label>New York, NY</label>
+                    <input className='radio' type='radio' name='rightRadio' value='new-york' onChange={handleChange} />
+                </span>
 
-                <label>Portland, OR</label>
-                <input type='radio' name='rightRadio' value='portland-or' onChange={handleChange} />
-            <button onClick={() => props.getRightCityData(rightState.value)}>getCityData</button>
+                <span className='input'>
+                    <label>Portland, OR</label>
+                    <input className='radio' type='radio' name='rightRadio' value='portland-or' onChange={handleChange} />
+                </span>
+
+                <button className='button' onClick={() => props.getRightCityData(rightState.value)}>getCityData</button>
             </form>
 
-
-            <h4>{props.right.right.data.full_name && props.right.right.data.full_name}</h4>
-            <p>{props.right.right.scores.summary && props.right.right.scores.summary}</p>
-            <h2>{props.right.right.scores.teleport_city_score && props.right.right.scores.teleport_city_score}</h2>
+            <div className='card'>
+                <p>{console.log(props.right.right.data.full_name)}</p>
+                <h4>{props.right.right.data.full_name && props.right.right.data.full_name}</h4>
+                <p>{props.right.right.scores.summary && props.right.right.scores.summary}</p>
+                <h2>{props.right.right.scores.teleport_city_score && props.right.right.scores.teleport_city_score}</h2>
+            </div>
         </div>
     )
 }

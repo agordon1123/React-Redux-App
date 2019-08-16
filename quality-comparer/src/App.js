@@ -5,14 +5,14 @@ import './App.scss';
 
 // components
 import CityList from './components/CityList';
+import Header from './components/Header';
 // import { getLeftCityData } from './actions';
 
 const App = props => {
   console.log(props)
   return (
     <div className="App">
-      <h1>CompArea</h1>
-      <p>Comparea is an app built using React and Redux for async data transfer</p>
+      <Header />
       <CityList props={props} />
     </div>
   );
