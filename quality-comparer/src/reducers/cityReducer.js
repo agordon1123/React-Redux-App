@@ -80,7 +80,7 @@ export const rightCityReducer = (state = intialState, action) => {
             return {
                 ...state,
                 right: {
-                    ...state.left,
+                    ...state.right,
                     data: action.payload,
                 },
                 isLoading: false,
@@ -96,7 +96,7 @@ export const rightCityReducer = (state = intialState, action) => {
             return {
                 ...state,
                 right: {
-                    ...state.left,
+                    ...state.right,
                     scores: action.payload
                 },
                 isLoading: false,
