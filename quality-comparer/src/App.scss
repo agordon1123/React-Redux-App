@@ -1,31 +1,36 @@
 
 .App {
   text-align: center;
-  background-color: #689155;
+  background-color: #93B48B;
   height: 100vh;
   font-size: 1em;
   .header {
     color: white;
-    background-color: black;
-    // width: 100%;
+    background-color: #3F4045;
     padding: 20px;
     font-size: 1.05em;
+    h1 {
+      margin: 10px;
+    }
     p {
       width: 50%;
       margin: 0 auto;
     }
   }
   .cityList {
-    background-color: snow;
+    // background-color: #F0EBD8;
     max-width: 80%;
     height: 70vh;
     margin: 40px auto;
-    border: 1px solid black;
+    // border: 1px solid black;
     border-radius: 10px;
     display: flex;
     justify-content: space-around;
     .city {
       width: 40%;
+      .city-logo {
+        margin-top: 20px;
+      }
       .form {
         display: flex;
         flex-direction: column;
@@ -34,7 +39,8 @@
           display: flex;
           justify-content: space-between;
           margin: 5px;
-          background-color: lightgray;
+          border-bottom: 2px solid black;
+          padding-bottom: 5px;
           .radio {
             margin: 0 10px;
           }
@@ -42,12 +48,23 @@
         .button {
           margin: 5px auto;
           width: 50%;
+          height: 30px;
+          border-radius: 5px;
+          background-color: #748CAB;
+          color: white;
+          border: 2px solid black;
         }
+      }
+      h2 {
+        margin: 0;
       }
     }
   }
   .card {
     margin-top: 20px;
+    // background-color: white;
+    border-radius: 5px;
+    padding: 20px;
     p {
       margin: 30px;
       text-align: left;

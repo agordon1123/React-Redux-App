@@ -18,7 +18,9 @@ const CityRight = (props) => {
 
     return (
         <div className='city cityRight'>
-            <h1>Right</h1>
+            {/* <h1>City 2</h1> */}
+            <img className='city-logo' src="https://img.icons8.com/ios-filled/50/000000/city-buildings.png"></img>
+            <h2>City 2</h2>
 
             <form className='form' onSubmit={handleSubmit}>
                 <span className='input'>
@@ -50,8 +52,7 @@ const CityRight = (props) => {
             </form>
 
             <div className='card'>
-                <p>{console.log(props.right.right.data.full_name)}</p>
-                <h4>{props.right.right.data.full_name && props.right.right.data.full_name}</h4>
+                <h2>{props.right.right.data.full_name && props.right.right.data.full_name}</h2>
                 <p>{props.right.right.scores.summary && props.right.right.scores.summary}</p>
                 <h2>{props.right.right.scores.teleport_city_score && props.right.right.scores.teleport_city_score}</h2>
             </div>
