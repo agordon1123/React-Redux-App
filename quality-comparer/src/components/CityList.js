@@ -6,8 +6,8 @@ const CityList = (props) => {
     console.log(props)
     return (
         <div className='cityList'>
-            <CityLeft props={props}/>
-            <CityRight props={props} />
+            <CityLeft />
+            <CityRight />
         </div>
     )
 }

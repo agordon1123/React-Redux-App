@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import { leftCityReducer } from './reducers';
+import { leftCityReducer, rightCityReducer } from './reducers';
 import './index.css';
 import App from './App';
 
+const rootReducer = combineReducers({left: leftCityReducer, right: rightCityReducer})
+
 const store = createStore(
-    leftCityReducer,
+    rootReducer,
     applyMiddleware(
         thunk,
         logger

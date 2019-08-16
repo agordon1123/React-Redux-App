@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { getLeftCityData } from '../actions'
 
-
 const CityLeft = (props) => {
     console.log(props)
     const [leftState, setLeftState] = useState({ value: '' })
+    console.log(leftState)
     
     const handleChange = e => {
         setLeftState({ value: e.target.value })
@@ -39,9 +39,9 @@ const CityLeft = (props) => {
             </form>
 
 
-            <h4>{props.left.data.full_name && props.left.data.full_name}</h4>
-            <p>{props.left.scores.summary && props.left.scores.summary}</p>
-            <h2>{props.left.scores.teleport_city_score && props.left.scores.teleport_city_score}</h2>
+            <h4>{props.left.left.data.full_name && props.left.left.data.full_name}</h4>
+            <p>{props.left.left.scores.summary && props.left.left.scores.summary}</p>
+            <h2>{props.left.left.scores.teleport_city_score && props.left.left.scores.teleport_city_score}</h2>
         </div>
     )
 }
