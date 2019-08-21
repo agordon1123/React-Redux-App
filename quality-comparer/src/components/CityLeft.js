@@ -1,6 +1,25 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { getLeftCityData } from '../actions'
+import { cityData } from '../data/cities';
+import { leftChartData } from './functions/leftChartData';
+import City from './City';
+import FusionCharts from 'fusioncharts';
+import Widgets from 'fusioncharts/fusioncharts.widgets';
+import ReactFC from 'react-fusioncharts';
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+
+ReactFC.fcRoot(FusionCharts, Widgets, FusionTheme);
+
+const chartConfigs = (props) => {
+    return {
+        type: 'angulargauge',
+        width: 240,
+        height: 120,
+        dataFormat: 'json',
+        dataSource: leftChartData(props),
+    }
+};
 
 const CityLeft = (props) => {
     console.log(props)
@@ -18,44 +37,27 @@ const CityLeft = (props) => {
 
     return (
         <div className='city cityLeft'>
-            {/* <h1>City 1</h1> */}
             <img className='city-logo' src="https://img.icons8.com/ios-filled/50/000000/city-buildings.png"></img>
             <h2>City 1</h2>
 
             <form className='form' onSubmit={handleSubmit}>
-                <span className='input'>
-                    <label>Austin, TX</label>
-                    <input className='radio' type='radio' name='leftRadio' value='austin' onChange={handleChange} />
-                </span>
+                <select className='select' onChange={handleChange}>
+                    {cityData.map(city => {
+                        return <City city={city} />
+                    })}
+                </select>
 
-                <span className='input'>
-                    <label>San Francisco, CA</label>
-                    <input className='radio' type='radio' name='leftRadio' value='san-francisco-bay-area' onChange={handleChange} />
-                </span>
-
-                <span className='input'>
-                    <label>Charleston, SC</label>
-                    <input className='radio' type='radio' name='leftRadio' value='charleston' onChange={handleChange} />
-                </span>
-
-                <span className='input'>
-                    <label>New York, NY</label>
-                    <input className='radio' type='radio' name='leftRadio' value='new-york' onChange={handleChange} />
-                </span>
-
-                <span className='input'>
-                    <label>Portland, OR</label>
-                    <input className='radio' type='radio' name='leftRadio' value='portland-or' onChange={handleChange} />
-                </span>
-
-                <button className='button' onClick={() => props.getLeftCityData(leftState.value)}>getCityData</button>
+                <button className='button' onClick={() => props.getLeftCityData(leftState.value.replace(/\s+/g, '-').replace(/,/g, '').toLowerCase())}>getCityData</button>
             </form>
 
-            <div className='card'>
-                <h2>{props.left.left.data.full_name && props.left.left.data.full_name}</h2>
-                <p>{props.left.left.scores.summary && props.left.left.scores.summary}</p>
-                <h2>{props.left.left.scores.teleport_city_score && props.left.left.scores.teleport_city_score}</h2>
-            </div>
+            {props.left.left.data && props.left.left.scores &&
+                <div className='card'>
+                    <h2>{props.left.left.data.full_name}</h2>
+                    <h2>{Math.round(props.left.left.scores.teleport_city_score)} / 100</h2>
+                    <ReactFC className='graph' {...chartConfigs(props)} />
+                    <p>{props.left.left.scores.summary.replace(/<p>|<b>|<\/b>|<\/p>/gi, '')}</p>
+                </div>
+            }
         </div>
     )
 }

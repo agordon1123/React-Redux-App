@@ -11,12 +11,12 @@ import {
 
 const intialState = {
     left: {
-        data: [],
-        scores: []
+        data: undefined,
+        scores: undefined
     },
     right: {
-        data: [],
-        scores: []
+        data: undefined,
+        scores: undefined
     },
     rating: [],
     isLoading: false,
