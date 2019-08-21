@@ -38,7 +38,7 @@ const CityLeft = (props) => {
     return (
         <div className='city cityLeft'>
             <img className='city-logo' src="https://img.icons8.com/ios-filled/50/000000/city-buildings.png"></img>
-            <h2>City 1</h2>
+            <h2 className='city-indicator'>City 1</h2>
 
             <form className='form' onSubmit={handleSubmit}>
                 <select className='select' onChange={handleChange}>
