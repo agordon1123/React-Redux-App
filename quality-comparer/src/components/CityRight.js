@@ -46,7 +46,7 @@ const CityRight = (props) => {
                     })}
                 </select>
 
-                <button className='button' onClick={() => props.getRightCityData(rightState.value.replace(/\s+/g, '-').replace(/,/g, '').toLowerCase())}>getCityData</button>
+                <button className='button' onClick={() => props.getRightCityData(rightState.value.replace(/\s+/g, '-').replace(/,/g, '').replace(/\./g, '').toLowerCase())}>Submit</button>
             </form>
 
             {props.right.right.data && props.right.right.scores &&
