@@ -14,6 +14,9 @@
     p {
       width: 50%;
       margin: 0 auto;
+      @media(max-width: 400px) {
+        width: 85%;
+      }
     }
   }
   .cityList {
@@ -23,8 +26,15 @@
     border-radius: 10px;
     display: flex;
     justify-content: space-around;
+    @media(max-width: 400px) {
+      width: 100%;
+      display: block;
+    }
     .city {
       width: 40%;
+      @media(max-width: 400px) {
+        width: 100%;
+      }
       .city-logo {
         margin-top: 20px;
       }
@@ -95,8 +105,14 @@
       margin: 30px;
       text-align: left;
     }
-    h2 {
-      margin: 10px;
+    .city-name {
+      padding: 5px;
+    }
+    .city-score {
+      padding: 5px;
+    }
+    .graph {
+      margin: 5px;
     }
   }
 }
