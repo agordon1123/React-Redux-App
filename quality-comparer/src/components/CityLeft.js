@@ -52,8 +52,8 @@ const CityLeft = (props) => {
 
             {props.left.left.data && props.left.left.scores &&
                 <div className='card'>
-                    <h2>{props.left.left.data.full_name}</h2>
-                    <h2>%{Math.round(props.left.left.scores.teleport_city_score)} / 100</h2>
+                    <h2 className='city-name'>{props.left.left.data.full_name}</h2>
+                    <h2 className='city-score'>{Math.round(props.left.left.scores.teleport_city_score)} / 100</h2>
                     <ReactFC className='graph' {...chartConfigs(props)} />
                     <p>{props.left.left.scores.summary.replace(/<p>|<b>|<\/b>|<\/p>/gi, '')}</p>
                 </div>
