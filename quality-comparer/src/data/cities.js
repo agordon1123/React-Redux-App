@@ -1,5 +1,9 @@
 export const cityData = [{
-    "href": "https://api.teleport.org/api/urban_areas/slug:aarhus/",
+    "href": "",
+    "name": "Select a city..."
+  },
+  {
+    "href": "https://api.teleport.org/api/urban_areas/slug:adelaide/",
     "name": "Aarhus"
   },
   {
