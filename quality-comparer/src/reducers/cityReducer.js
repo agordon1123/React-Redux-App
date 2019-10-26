@@ -6,7 +6,10 @@ import {
     RIGHT_FETCH_CITY_DATA_START, 
     RIGHT_FETCH_CITY_DATA_SUCCESS, 
     RIGHT_FETCH_CITY_SCORES_START, 
-    RIGHT_FETCH_CITY_SCORES_SUCCESS, 
+    RIGHT_FETCH_CITY_SCORES_SUCCESS,
+    GET_CITIES_START,
+    GET_CITIES_SUCCESS,
+    GET_CITIES_ERROR,
     ERROR } from '../actions';
 
 const intialState = {
@@ -22,6 +25,13 @@ const intialState = {
     isLoading: false,
     error: ''
 };
+
+const cityState = {
+    isLoading: false,
+    error: '',
+    cities: [],
+    city: {}
+}
 
 export const leftCityReducer = (state = intialState, action) => {
     switch(action.type) {
@@ -112,3 +122,27 @@ export const rightCityReducer = (state = intialState, action) => {
             return state;
     }
 };
+
+export const cityReducer = (state = cityState, action) => {
+    switch(action.type) {
+        case GET_CITIES_START:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case GET_CITIES_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                cities: action.payload
+            }
+        case GET_CITIES_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        default:
+            return state;
+    }
+}

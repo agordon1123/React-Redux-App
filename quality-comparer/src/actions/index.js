@@ -12,3 +12,9 @@ export {
     RIGHT_FETCH_CITY_SCORES_SUCCESS,
     ERROR 
 } from './getCityData';
+
+export {
+    GET_CITIES_START,
+    GET_CITIES_SUCCESS,
+    GET_CITIES_ERROR,
+} from './getCityList';
