@@ -1,9 +1,10 @@
 import React from 'react';
 
 const Metrics = props => {
+    console.log(props.city);
     return (
         <div>
-            Metrics
+            <p>{props.city.full_name}</p>
         </div>
     );
 };

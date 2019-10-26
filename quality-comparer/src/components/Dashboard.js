@@ -14,7 +14,7 @@ const Dashboard = props => {
     return (
         <div className='dashboard'>
             <CityList cities={props.cities.cities} getCityMetrics={props.getCityMetrics} />
-            <Metrics />
+            <Metrics city={props.cities.city} />
         </div>
     );
 };

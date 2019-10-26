@@ -11,6 +11,7 @@ import {
     GET_CITIES_SUCCESS,
     GET_CITIES_ERROR,
     ERROR } from '../actions';
+import { GET_CITY_METRICS_START, GET_CITY_METRICS_SUCCESS, GET_CITY_METRICS_ERROR } from '../actions/getCityMetrics';
 
 const intialState = {
     left: {
@@ -128,7 +129,8 @@ export const cityReducer = (state = cityState, action) => {
         case GET_CITIES_START:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                error: ''
             }
         case GET_CITIES_SUCCESS:
             return {
@@ -137,6 +139,24 @@ export const cityReducer = (state = cityState, action) => {
                 cities: action.payload
             }
         case GET_CITIES_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case GET_CITY_METRICS_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        case GET_CITY_METRICS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                city: action.payload
+            }
+        case GET_CITY_METRICS_ERROR:
             return {
                 ...state,
                 isLoading: false,
