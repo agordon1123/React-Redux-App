@@ -50,3 +50,13 @@ Once you have chosen an API to consume, build an app that makes sense for the da
 ## Stretch Problems
 
 Take the app as far as you can go! Styling, redux hooks, another API, an input to fetch data dynamically, etc. Work on it, improve it until the end of the day. If you find yourself finishing with time left to spare, jump on with your TL or fellow student to ask them what feature they think you should build next. Good luck!
+
+
+## Plan for Teleport API
+
+- BaseURL: https://api.teleport.org/api/
+- Create selectors in the nav to change selectable cities from all to continent specific
+- Use https://api.teleport.org/api/continents/ to get a list of continents and href to pass to getter onClick
+- Selecting a continent will prompt a GET to /api/continents/geonames:${var}/
+- This then brings up a link to all of the urban_area at _links[continent:urban_areas]
+- May need a getPhoto fn to take in the name and select photos off another branch of the API

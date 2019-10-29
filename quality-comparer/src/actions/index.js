@@ -17,4 +17,22 @@ export {
     GET_CITIES_START,
     GET_CITIES_SUCCESS,
     GET_CITIES_ERROR,
-} from './getCityList';
+} from './getAllCities';
+
+export {
+    GET_CONTINENTS_START,
+    GET_CONTINENTS_SUCCESS,
+    GET_CONTINENTS_ERROR,
+} from './getContinents';
+
+export {
+    GET_CONTINENT_START,
+    GET_CONTINENT_SUCCESS,
+    GET_CONTINENT_ERROR,
+} from './getContinent';
+
+export {
+    GET_CITIES_BY_CONTINENT_START,
+    GET_CITIES_BY_CONTINENT_SUCCESS,
+    GET_CITIES_BY_CONTINENT_ERROR,
+} from './getCitiesByContinent';

@@ -4,7 +4,7 @@ export const GET_CITIES_START = 'GET_CITIES_START';
 export const GET_CITIES_SUCCESS = 'GET_CITIES_SUCCESS';
 export const GET_CITIES_ERROR = 'GET_CITIES_ERROR';
 
-const getCityList = () => {
+const getAllCities = () => {
     return dispatch => {
         dispatch({ type: GET_CITIES_START });
         axios
@@ -18,4 +18,4 @@ const getCityList = () => {
     };
 };
 
-export default getCityList;
+export default getAllCities;

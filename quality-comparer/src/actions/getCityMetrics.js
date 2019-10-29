@@ -5,6 +5,7 @@ export const GET_CITY_METRICS_SUCCESS =  'GET_CITY_METRICS_SUCCESS';
 export const GET_CITY_METRICS_ERROR =  'GET_CITY_METRICS_ERROR';
 
 const getCityMetrics = url => {
+    console.log(url)
     return dispatch => {
         dispatch({ type: GET_CITY_METRICS_START });
         axios

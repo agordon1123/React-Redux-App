@@ -10,6 +10,15 @@ import {
     GET_CITIES_START,
     GET_CITIES_SUCCESS,
     GET_CITIES_ERROR,
+    GET_CONTINENTS_START,
+    GET_CONTINENTS_SUCCESS,
+    GET_CONTINENTS_ERROR,
+    GET_CONTINENT_START,
+    GET_CONTINENT_SUCCESS,
+    GET_CONTINENT_ERROR,
+    GET_CITIES_BY_CONTINENT_START,
+    GET_CITIES_BY_CONTINENT_SUCCESS,
+    GET_CITIES_BY_CONTINENT_ERROR,
     ERROR } from '../actions';
 import { GET_CITY_METRICS_START, GET_CITY_METRICS_SUCCESS, GET_CITY_METRICS_ERROR } from '../actions/getCityMetrics';
 
@@ -31,7 +40,9 @@ const cityState = {
     isLoading: false,
     error: '',
     cities: [],
-    city: {}
+    city: {},
+    continents: [],
+    continent: undefined
 }
 
 export const leftCityReducer = (state = intialState, action) => {
@@ -157,6 +168,57 @@ export const cityReducer = (state = cityState, action) => {
                 city: action.payload
             }
         case GET_CITY_METRICS_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case GET_CONTINENTS_START:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case GET_CONTINENTS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                continents: action.payload
+            }
+        case GET_CONTINENTS_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case GET_CONTINENT_START:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case GET_CONTINENT_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                continent: action.payload
+            }
+        case GET_CONTINENT_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case GET_CITIES_BY_CONTINENT_START:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case GET_CITIES_BY_CONTINENT_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                cities: action.payload
+            }
+        case GET_CITIES_BY_CONTINENT_ERROR:
             return {
                 ...state,
                 isLoading: false,
