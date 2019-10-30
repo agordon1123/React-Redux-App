@@ -5,6 +5,10 @@ import Metrics from './Metrics';
 import getAllCities from '../actions/getAllCities';
 import getCitiesByContinent from '../actions/getCitiesByContinent';
 import getCityMetrics from '../actions/getCityMetrics';
+import getCityImages from '../actions/getCityImages';
+import getCitySalaries from '../actions/getCitySalaries';
+import getCityDetails from '../actions/getCityDetails';
+import getCityScores from '../actions/getCityScores';
 
 const Dashboard = props => {
     console.log(props);
@@ -23,8 +27,8 @@ const Dashboard = props => {
     
     return (
         <div className='dashboard'>
-            <CityList cities={props.cities.cities} getCityMetrics={props.getCityMetrics} />
-            <Metrics city={props.cities.city} />
+            <CityList cities={props.cities.cities} getCityMetrics={props.getCityMetrics} getCityScores={props.getCityScores} />
+            <Metrics city={props.cities.city} getCityImages={props.getCityImages} images={props.cities.images} getCitySalaries={props.getCitySalaries} salaries={props.cities.salaries} details={props.cities.details} getCityDetails={props.getCityDetails} getCityScores={props.getCityScores} scores={props.cities.scores} />
         </div>
     );
 };
@@ -35,4 +39,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, { getAllCities, getCityMetrics, getCitiesByContinent })(Dashboard);
+export default connect(mapStateToProps, { getAllCities, getCityMetrics, getCitiesByContinent, getCityImages, getCitySalaries, getCityDetails, getCityScores })(Dashboard);
