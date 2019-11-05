@@ -10,8 +10,7 @@ const getCityScores = url => {
         axios
             .get(url)
             .then(res => {
-                console.log(res.data);
-                dispatch({ type: GET_CITY_SCORES_SUCCESS, payload: res.data.categories });
+                dispatch({ type: GET_CITY_SCORES_SUCCESS, payload: res.data });
             })
             .catch(err => {
                 dispatch({ type: GET_CITY_SCORES_ERROR, payload: err });

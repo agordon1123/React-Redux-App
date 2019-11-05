@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import getContinents from '../actions/getContinents';
 import getContinent from '../actions/getContinent';
@@ -6,20 +6,43 @@ import getAllCities from '../actions/getAllCities';
 
 const Nav = props => {
     console.log(props);
+    const [selected, setSelected] = useState('All');
+    console.log(selected);
     useEffect(() => {
-        console.log('nav mounted');
+        // Get continents on mount
         props.getContinents();
     }, []);
 
     return (
         <div className='nav'>
             <h1>Comparea</h1>
-            <button onClick={() => props.getAllCities()}>All</button>
+            <button 
+                className='nav-button'
+                style={selected === 'All' ? {border: '2px solid blue'} : {border: '2px solid gray'}}
+                onClick={() => {
+                    props.getAllCities();
+                    setSelected('All');
+                }}
+            >All</button>
             {
                 props.cities.continents.length && props.cities.continents.map(cont => {
                     console.log(cont);
-                    // Need to do two functions: one to get continent and then another to get continent:urban_areas
-                    return <button key={cont.name} onClick={() => props.getContinent(cont.href)}>{cont.name}</button>
+                    if(cont.name === "Antarctica") {
+                        // No urban areas in this continent
+                        return null;
+                    } else {
+                        return (
+                            <button 
+                                className='nav-button'
+                                style={selected === cont.name ? {border: '2px solid blue'} : {border: '2px solid gray'}}
+                                key={cont.name}
+                                onClick={() => {
+                                    props.getContinent(cont.href);
+                                    setSelected(cont.name);
+                                }}
+                            >{cont.name}</button>
+                        )
+                    }
                 })
             }
         </div>

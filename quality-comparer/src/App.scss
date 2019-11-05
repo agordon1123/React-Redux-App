@@ -126,21 +126,112 @@
     h1 {
       margin: 0;
     }
+    .nav-button {
+      margin: 5px;
+      padding: 5px;
+      border: 2px solid gray;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+        border: 2px solid blue;
+      }
+    }
   }
   .dashboard {
     display: inline-flex;
+    max-height: 88vh;
     .city-list-container {
+      .city-search {
+        width: 100%;
+      }
       .srollable-list {
         width: 20vw;
-        max-height: 90vh;
+        max-height: 88vh;
         overflow: auto;
+        p {
+          margin: 0;
+          padding: 10px;
+        }
+        .city-list-card {
+          padding-left: 20px;
+          &:hover {
+            cursor: pointer;
+            background-color: lightslategray;
+            border-bottom: 2px solid blue;
+            border-top: 2px solid blue;
+            // color: white;
+          }
+        }
       }
     }
     .dashboard-metrics {
       width: 78vw;
-      // display: flex;
+      display: flex;
+      flex-direction: column;
       h1 {
         text-align: center;
+      }
+      .metrics-button-container {
+        margin: 0 auto;
+        .metrics-button {
+          margin: 5px;
+          padding: 5px;
+          border: 2px solid gray;
+          border-radius: 5px;
+          &:hover {
+            cursor: pointer;
+            border: 2px solid blue;
+          }  
+        }
+      }
+      .overall-score {
+        text-align: center;
+      }
+      .summary {
+        max-width: 75%;
+        margin: 0 auto;
+      }
+      .metrics-scores-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        max-height: 70vh;
+        .metrics-score {
+          display: flex;
+          align-items: center;
+          width: 45%;
+          p {
+            margin-left: 10px;
+          }
+          .score-bar {
+            position: relative;
+            height: 8px;
+            width: 140px;
+            border-radius: 50px;
+            border: 1px solid black;
+            .filler {
+              background: white;
+              height: 100%;
+              border-radius: inherit;
+              transition: width .2s ease-in;
+            }
+          }
+        }
+      }
+      .detail-value-container {
+        display: flex;
+        p {
+          margin-left: 10px
+        }
+      }
+      .chart-container {
+        max-width: 78vw;
+        overflow-x: scroll;
+      }
+      .city-image {
+        width: inherit;
+        margin-top: 10%;
       }
     }
   }
