@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import GoogleMapReact from 'google-map-react';
-import { ResponsiveContainer, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line } from 'recharts';
+import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line } from 'recharts';
 import ScoreBar from './ScoreBar';
+import MapBox from './MapBox';
 
 const Metrics = props => {
     console.log(props);
@@ -58,6 +58,13 @@ const Metrics = props => {
                             props.getCityImages(props.city._links['ua:images'].href)
                         }}
                     >Images</button>
+
+                    <button
+                        className='metrics-button'
+                        style={tab ==='maps' ? {border: '2px solid blue'} : {border: '2px solid grey'}}
+                        onClick={() => setTab('maps')}
+                    
+                    >Map</button>
                 </div>
 
                 {
@@ -81,7 +88,6 @@ const Metrics = props => {
                     </>
                     :
                     tab === 'details' ?
-                    // <p>Details</p>
                     props.details.length && props.details.map(el => {
                         return (
                             <>
@@ -152,10 +158,12 @@ const Metrics = props => {
                     </div>
                     :
                     tab ==='images' ?
-                    // <p>Images</p>
                     props.images.length && props.images.map(el => {
                         return <img className='city-image' src={el.image.web}></img>
                     })
+                    :
+                    tab === 'maps' ?
+                        <MapBox props={props.city.bounding_box.latlon} />
                     : null
                 }
             </div>

@@ -21,7 +21,6 @@ const Dashboard = props => {
         // Get citites for chosen continent when updated
         if (props.cities.continent) {
             props.getCitiesByContinent(props.cities.continent._links['continent:urban_areas'].href);
-            console.log('continent info updated');
         }
     }, [props.cities.continent]);
     

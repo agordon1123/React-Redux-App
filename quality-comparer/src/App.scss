@@ -233,6 +233,12 @@
         width: inherit;
         margin-top: 10%;
       }
+      .mapbox-container {
+        height: 400px;
+        width: 500px;
+        margin: 20px auto;
+        border: 2px solid;
+      }
     }
   }
 }
