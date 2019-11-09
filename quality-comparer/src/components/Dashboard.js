@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CityList from './CityList';
 import Metrics from './Metrics';
+// TODO set up an index.js
 import getAllCities from '../actions/getAllCities';
 import getCitiesByContinent from '../actions/getCitiesByContinent';
 import getCityMetrics from '../actions/getCityMetrics';
@@ -11,7 +12,6 @@ import getCityDetails from '../actions/getCityDetails';
 import getCityScores from '../actions/getCityScores';
 
 const Dashboard = props => {
-    console.log(props);
     useEffect(() => {
         // Get all citites on mount
         props.getAllCities();

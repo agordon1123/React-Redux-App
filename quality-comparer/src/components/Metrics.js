@@ -4,11 +4,9 @@ import ScoreBar from './ScoreBar';
 import MapBox from './MapBox';
 
 const Metrics = props => {
-    console.log(props);
     const [tab, setTab] = useState('scores');
     const [details, setDetails] = useState(false);
     const [desired, setDesired] = useState('Business Freedom');
-    console.log(desired);
 
     // Reset tab content to scores when a new city is chosen
     useEffect(() => {
@@ -25,7 +23,7 @@ const Metrics = props => {
                 <div className='metrics-button-container'>
                     <button 
                         className='metrics-button'
-                        style={tab === 'scores' ? {border: '2px solid blue'} : {border: '2px solid grey'}}
+                        style={tab === 'scores' ? {border: '2px solid #4098F4'} : {border: '2px solid grey'}}
                         onClick={() => {
                             setTab('scores');
                             props.getCityScores(props.city._links['ua:scores'].href);
@@ -34,7 +32,7 @@ const Metrics = props => {
 
                     <button 
                         className='metrics-button'
-                        style={tab === 'details' ? {border: '2px solid blue'} : {border: '2px solid grey'}}
+                        style={tab === 'details' ? {border: '2px solid #4098F4'} : {border: '2px solid grey'}}
                         onClick={() => {
                             setTab('details');
                             props.getCityDetails(props.city._links['ua:details'].href);
@@ -43,7 +41,7 @@ const Metrics = props => {
 
                     <button 
                         className='metrics-button'
-                        style={tab === 'salaries' ? {border: '2px solid blue'} : {border: '2px solid grey'}}
+                        style={tab === 'salaries' ? {border: '2px solid #4098F4'} : {border: '2px solid grey'}}
                         onClick={() => {
                             setTab('salaries');
                             props.getCitySalaries(props.city._links['ua:salaries'].href);
@@ -52,7 +50,7 @@ const Metrics = props => {
 
                     <button 
                         className='metrics-button'
-                        style={tab === 'images' ? {border: '2px solid blue'} : {border: '2px solid grey'}}
+                        style={tab === 'images' ? {border: '2px solid #4098F4'} : {border: '2px solid grey'}}
                         onClick={() => {
                             setTab('images');
                             props.getCityImages(props.city._links['ua:images'].href)
@@ -61,7 +59,7 @@ const Metrics = props => {
 
                     <button
                         className='metrics-button'
-                        style={tab ==='maps' ? {border: '2px solid blue'} : {border: '2px solid grey'}}
+                        style={tab ==='maps' ? {border: '2px solid #4098F4'} : {border: '2px solid grey'}}
                         onClick={() => setTab('maps')}
                     
                     >Map</button>
@@ -71,18 +69,29 @@ const Metrics = props => {
                     tab === 'scores' ?
                     <>
                         <h3 className='overall-score'>Overall Score: {Math.round(props.scores.teleport_city_score)}/100</h3>
-                        {/* Replace Element tags sent back with data from API */}
+                        {/* Replace Element tags sent back with data from API with empty string */}
                         <p className='summary'>{props.scores.summary && props.scores.summary.replace(/<p>|<b>|<\/b>|<\/p>/gi, '')}</p>
                         <div className='metrics-scores-container'>
                             {props.scores.categories && props.scores.categories.map(el => {
-                                console.log(el);
-                                return (
-                                    <div className='metrics-score'>
-                                        <ScoreBar props={el.score_out_of_10} />
-                                        <p>{Math.round(el.score_out_of_10)}/10</p>
-                                        <p>{el.name}</p>
-                                    </div>
-                                )
+                                // If score is 4 or greater: filler color green
+                                if(el.score_out_of_10 > 4) {
+                                    return (
+                                        <div className='metrics-score'>
+                                            <ScoreBar score={el.score_out_of_10} />
+                                            <p>{Math.round(el.score_out_of_10)}/10</p>
+                                            <p>{el.name}</p>
+                                        </div>
+                                    )
+                                // Else, filler color red
+                                } else {
+                                    return (
+                                        <div className='metrics-score'>
+                                            <ScoreBar score={el.score_out_of_10} red={'#f45840'} />
+                                            <p>{Math.round(el.score_out_of_10)}/10</p>
+                                            <p>{el.name}</p>
+                                        </div>
+                                    )
+                                }
                             })}
                         </div>
                     </>
@@ -90,18 +99,26 @@ const Metrics = props => {
                     tab === 'details' ?
                     props.details.length && props.details.map(el => {
                         return (
-                            <>
-                                <h3 onClick={() => {
-                                    setDetails(!details);
-                                    setDesired(el.label);
-                                }}>{el.label}</h3>
+                            <div className='dashboard-details'>
+                                <div 
+                                    className='dashboard-details-header-container'
+                                    onClick={() => {
+                                        setDetails(!details);
+                                        setDesired(el.label);
+                                    }}
+                                >
+                                    <h3>{el.label}</h3>
+                                    <p>{el.label === desired && details === false ? '▼' : '►'}</p>
+                                </div>
                                 {
                                     el.data.map(e => {
                                         if (e.type === "float" && desired === el.label) {
                                             return (
                                                 <div style={details === false ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
-                                                    <p>{e.label}</p>
-                                                    <p>Float: {e.float_value}</p>
+                                                    {
+                                                        // Remove Teleport scores (duplicates)
+                                                        e.label.includes('[Teleport score]') ? null : <><p>{e.label}:</p> <p>{e.float_value}</p></>
+                                                    }
                                                 </div>
                                             )
                                         } else if (e.type === "int" && desired === el.label) {
@@ -122,13 +139,13 @@ const Metrics = props => {
                                             return (
                                                 <div style={details === false ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
                                                     <p>{e.label}</p>
-                                                    <p>DV: ${e.currency_dollar_value}</p>
+                                                    <p>${e.currency_dollar_value}</p>
                                                 </div>
                                             )
                                         }
                                     })
                                 }
-                            </>
+                            </div>
                         )
                     })
                     :
@@ -151,9 +168,9 @@ const Metrics = props => {
                             <YAxis />
                             <Tooltip />
                             <Legend />
-                            <Line type="monotone" dataKey="25th Percentile" stroke="#82ca9d" />
-                            <Line type="monotone" dataKey="50th Percentile" stroke="#8884d8" />
-                            <Line type="monotone" dataKey="75th Percentile" stroke="red" />
+                            <Line type="monotone" dataKey="25th Percentile" stroke="#4098f4" />
+                            <Line type="monotone" dataKey="50th Percentile" stroke="#6d40f4" />
+                            <Line type="monotone" dataKey="75th Percentile" stroke="#40f49d" />
                         </LineChart>
                     </div>
                     :
@@ -170,7 +187,7 @@ const Metrics = props => {
         );
     } else {
         return (
-            <div className='dashboard-metrics'>
+            <div className='dashboard-metrics landing'>
                 <p>Select a city to get started</p>
             </div>
         );

@@ -4,7 +4,7 @@ const CityListCard = props => {
     return (
         <div 
             className='city-list-card'
-            style={props.selected === props.city.name ? {borderTop: '2px solid blue', borderBottom: '2px solid blue', backgroundColor: 'gray'} : null}
+            style={props.selected === props.city.name ? { backgroundColor: '#4098F4', color: '#FFFFFF' } : null}
             onClick={() => {
                 props.getCityMetrics(props.city.href);
                 props.setSelected(props.city.name);

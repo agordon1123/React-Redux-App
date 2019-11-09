@@ -5,9 +5,7 @@ import getContinent from '../actions/getContinent';
 import getAllCities from '../actions/getAllCities';
 
 const Nav = props => {
-    console.log(props);
     const [selected, setSelected] = useState('All');
-    console.log(selected);
     useEffect(() => {
         // Get continents on mount
         props.getContinents();
@@ -15,36 +13,41 @@ const Nav = props => {
 
     return (
         <div className='nav'>
-            <h1>Comparea</h1>
-            <button 
-                className='nav-button'
-                style={selected === 'All' ? {border: '2px solid blue'} : {border: '2px solid gray'}}
-                onClick={() => {
-                    props.getAllCities();
-                    setSelected('All');
-                }}
-            >All</button>
-            {
-                props.cities.continents.length && props.cities.continents.map(cont => {
-                    console.log(cont);
-                    if(cont.name === "Antarctica") {
-                        // No urban areas in this continent
-                        return null;
-                    } else {
-                        return (
-                            <button 
-                                className='nav-button'
-                                style={selected === cont.name ? {border: '2px solid blue'} : {border: '2px solid gray'}}
-                                key={cont.name}
-                                onClick={() => {
-                                    props.getContinent(cont.href);
-                                    setSelected(cont.name);
-                                }}
-                            >{cont.name}</button>
-                        )
-                    }
-                })
-            }
+            <div className='nav-logo'>
+                <h1>CompArea</h1>
+            </div>
+
+            <div className='nav-buttons'>
+                <button 
+                    className='nav-button'
+                    style={selected === 'All' ? {border: '2px solid #4098F4'} : {border: '2px solid gray'}}
+                    onClick={() => {
+                        props.getAllCities();
+                        setSelected('All');
+                    }}
+                >All</button>
+                {
+                    props.cities.continents.length && props.cities.continents.map(cont => {
+                        console.log(cont);
+                        if(cont.name === "Antarctica") {
+                            // No urban areas in this continent
+                            return null;
+                        } else {
+                            return (
+                                <button 
+                                    className='nav-button'
+                                    style={selected === cont.name ? {border: '2px solid blue'} : {border: '2px solid gray'}}
+                                    key={cont.name}
+                                    onClick={() => {
+                                        props.getContinent(cont.href);
+                                        setSelected(cont.name);
+                                    }}
+                                >{cont.name}</button>
+                            )
+                        }
+                    })
+                }
+            </div>
         </div>
     );
 };
