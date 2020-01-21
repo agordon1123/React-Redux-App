@@ -36,7 +36,7 @@ const Nav = props => {
                             return (
                                 <button 
                                     className='nav-button'
-                                    style={selected === cont.name ? {border: '2px solid blue'} : {border: '2px solid gray'}}
+                                    style={selected === cont.name ? {border: '2px solid #4098F4'} : {border: '2px solid gray'}}
                                     key={cont.name}
                                     onClick={() => {
                                         props.getContinent(cont.href);

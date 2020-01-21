@@ -140,9 +140,9 @@
         border: 2px solid gray;
         border-radius: 5px;
         font-size: 1.6rem;
+        outline: none;
         &:hover {
           cursor: pointer;
-          border: 2px solid blue;
         }
       }
     }
