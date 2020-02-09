@@ -6,11 +6,15 @@ import MapBox from './MapBox';
 const Metrics = props => {
     const [tab, setTab] = useState('scores');
     const [details, setDetails] = useState(false);
-    const [desired, setDesired] = useState('Business Freedom');
+    const [desired, setDesired] = useState('');
+    // Business Freedom
+    console.log(desired);
+    console.log(details);
 
     // Reset tab content to scores when a new city is chosen
     useEffect(() => {
         setTab('scores');
+        // setDesired('Business Freedom');
         if(props.city._links) {
             props.getCityScores(props.city._links['ua:scores'].href);
         }
@@ -117,7 +121,7 @@ const Metrics = props => {
                                                 <div style={details === false ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
                                                     {
                                                         // Remove Teleport scores (duplicates)
-                                                        e.label.includes('[Teleport score]') ? null : <><p>{e.label}:</p> <p>{e.float_value}</p></>
+                                                        e.label.includes('[Teleport score]') ? null : <><p>{e.label}:</p> <p>{parseFloat(e.float_value).toFixed(2)}</p></>
                                                     }
                                                 </div>
                                             )
@@ -125,14 +129,14 @@ const Metrics = props => {
                                             return (
                                                 <div style={details === false ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
                                                     <p>{e.label}</p>
-                                                    <p>Int: {e.int_value}</p>
+                                                    <p>{e.int_value}</p>
                                                 </div>
                                             )
                                         } else if (e.type === "string" && desired === el.label) {
                                             return (
                                                 <div style={details === false ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
                                                     <p>{e.label}</p>
-                                                    <p>String: {e.string_value}</p>
+                                                    <p>{e.string_value}</p>
                                                 </div>
                                             )
                                         } else if (e.type === "currency_dollar" && desired === el.label) {
