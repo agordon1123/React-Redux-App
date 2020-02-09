@@ -8,8 +8,7 @@ const Metrics = props => {
     const [details, setDetails] = useState(false);
     const [desired, setDesired] = useState('');
     // Business Freedom
-    console.log(desired);
-    console.log(details);
+    console.log(props);
 
     // Reset tab content to scores when a new city is chosen
     useEffect(() => {
@@ -143,7 +142,10 @@ const Metrics = props => {
                                             return (
                                                 <div style={details === true ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
                                                     <p>{e.label}</p>
-                                                    <p>${e.currency_dollar_value}</p>
+                                                    <div className='currency-container'>
+                                                        <p>$</p>
+                                                        <p>{e.currency_dollar_value}</p>
+                                                    </div>
                                                 </div>
                                             )
                                         }
