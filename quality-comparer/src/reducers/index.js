@@ -1,1 +1,1 @@
-export { leftCityReducer, rightCityReducer } from './cityReducer';
+export { cityReducer } from './cityReducer';
