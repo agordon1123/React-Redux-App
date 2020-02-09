@@ -112,13 +112,13 @@ const Metrics = props => {
                                     }}
                                 >
                                     <h3>{el.label}</h3>
-                                    <p>{el.label === desired && details === false ? '▼' : '►'}</p>
+                                    <p>{el.label === desired && details === true ? '▼' : '►'}</p>
                                 </div>
                                 {
                                     el.data.map(e => {
                                         if (e.type === "float" && desired === el.label) {
                                             return (
-                                                <div style={details === false ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
+                                                <div style={details === true ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
                                                     {
                                                         // Remove Teleport scores (duplicates)
                                                         e.label.includes('[Teleport score]') ? null : <><p>{e.label}:</p> <p>{parseFloat(e.float_value).toFixed(2)}</p></>
@@ -127,21 +127,21 @@ const Metrics = props => {
                                             )
                                         } else if (e.type === "int" && desired === el.label) {
                                             return (
-                                                <div style={details === false ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
+                                                <div style={details === true ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
                                                     <p>{e.label}</p>
                                                     <p>{e.int_value}</p>
                                                 </div>
                                             )
                                         } else if (e.type === "string" && desired === el.label) {
                                             return (
-                                                <div style={details === false ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
+                                                <div style={details === true ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
                                                     <p>{e.label}</p>
                                                     <p>{e.string_value}</p>
                                                 </div>
                                             )
                                         } else if (e.type === "currency_dollar" && desired === el.label) {
                                             return (
-                                                <div style={details === false ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
+                                                <div style={details === true ? {display: 'flex'} : {display: 'none'}} className='detail-value-container'>
                                                     <p>{e.label}</p>
                                                     <p>${e.currency_dollar_value}</p>
                                                 </div>
