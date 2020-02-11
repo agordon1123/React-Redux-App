@@ -144,7 +144,7 @@ const Metrics = props => {
                                                     <p>{e.label}</p>
                                                     <div className='currency-container'>
                                                         <p>$</p>
-                                                        <p>{e.currency_dollar_value}</p>
+                                                        <p>{parseFloat(e.currency_dollar_value).toFixed(2)}</p>
                                                     </div>
                                                 </div>
                                             )
