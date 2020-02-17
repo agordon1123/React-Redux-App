@@ -8,7 +8,6 @@ const Metrics = props => {
     const [details, setDetails] = useState(false);
     const [desired, setDesired] = useState('');
     // Business Freedom
-    console.log(props);
 
     // Reset tab content to scores when a new city is chosen
     useEffect(() => {
