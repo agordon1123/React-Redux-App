@@ -28,7 +28,6 @@ const Nav = props => {
                 >All</button>
                 {
                     props.cities.continents.length && props.cities.continents.map(cont => {
-                        console.log(cont);
                         if(cont.name === "Antarctica") {
                             // No urban areas in this continent
                             return null;
