@@ -10,7 +10,6 @@ const getCitySalaries = url => {
         axios
             .get(url)
             .then(res => {
-                console.log(res.data);
                 dispatch({ type: GET_CITY_SALARIES_SUCCESS, payload: res.data.salaries });
             })
             .catch(err => {
