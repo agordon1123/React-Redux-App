@@ -2,7 +2,6 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
 const MapBox = ({ props }) => {
-    console.log(props);
 
     const staticProps = {
         center: {lat: (props.north + props.south) / 2, lng: (props.east + props.west) /2},
